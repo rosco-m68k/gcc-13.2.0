@@ -19,6 +19,8 @@ case $machine in
     powerpc-*-rtems*   | \
     powerpcle-*-eabisim* | \
     powerpcle-*-eabi* | \
+    *-rosco* | \
+    *-*-rosco* | \
     *-*-vxworks7* | \
     *-musl* )
 	#  IF there is no include fixing,

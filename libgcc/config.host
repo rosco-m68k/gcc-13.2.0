@@ -306,6 +306,10 @@ case ${host} in
       ;;
   esac
   ;;
+*-*-rosco*)
+  tmake_file="$tmake_file t-rosco"
+  extra_parts="crtbegin.o crtend.o"
+  ;;
 *-*-rtems*)
   tmake_file="$tmake_file t-rtems"
   extra_parts="crtbegin.o crtend.o"
@@ -982,6 +986,10 @@ m68k-*-linux*)			# Motorola m68k's running GNU/Linux
 	    tmake_file="$tmake_file m68k/t-slibgcc-elf-ver"
 	fi
 	md_unwind_header=m68k/linux-unwind.h
+	;;
+m68k-*-rosco*)
+	tmake_file="$tmake_file m68k/t-floatlib"
+	extra_parts="$extra_parts crti.o crtn.o"
 	;;
 m68k-*-rtems*)
 	tmake_file="$tmake_file m68k/t-floatlib"
