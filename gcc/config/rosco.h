@@ -7,7 +7,7 @@
 /* Default arguments you want when running your
    i686-myos-gcc/x86_64-myos-gcc toolchain */
 #undef LIB_SPEC
-#define LIB_SPEC "-lc" /* link against C standard library */
+#define LIB_SPEC "-lc -lrosco" /* link against C standard library */
  
 /* Files that are linked before user code.
    The %s tells GCC to look for these files in the library directory. */
