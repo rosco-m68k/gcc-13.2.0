@@ -4,10 +4,10 @@
 #undef ROSCO_M68K
 #define ROSCO_M68K 1
  
-/* Default arguments you want when running your
-   i686-myos-gcc/x86_64-myos-gcc toolchain */
+/* Default arguments for the m68k-elf-rosco-gcc toolchain 
+   - link newlib BSP and use our link script... */
 #undef LIB_SPEC
-#define LIB_SPEC "-lc -lrosco" /* link against C standard library */
+#define LIB_SPEC "-lc -lrosco %{!T*:-T hugerom_rosco_m68k_program.ld%s}" 
  
 /* Files that are linked before user code.
    The %s tells GCC to look for these files in the library directory. */
@@ -20,12 +20,10 @@
  
 /* Additional predefined macros. */
 #undef TARGET_OS_CPP_BUILTINS
-#define TARGET_OS_CPP_BUILTINS()      \
-  do {                                \
-    builtin_define ("__myos__");      \
-    builtin_define ("__unix__");      \
-    builtin_assert ("system=myos");   \
-    builtin_assert ("system=unix");   \
-    builtin_assert ("system=posix");   \
+#define TARGET_OS_CPP_BUILTINS()             \
+  do {                                       \
+    builtin_define ("__rosco_m68k__");       \
+    builtin_define ("ROSCO_M68K");           \
+    builtin_assert ("system=rosco_m68k");    \
   } while(0);
 
