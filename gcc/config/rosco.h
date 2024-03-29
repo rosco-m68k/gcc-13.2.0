@@ -7,7 +7,7 @@
 /* Default arguments for the m68k-elf-rosco-gcc toolchain 
    - link newlib BSP and use our link script... */
 #undef LIB_SPEC
-#define LIB_SPEC "-lc -lrosco %{!T*:-T hugerom_rosco_m68k_program.ld%s} --gc-sections" 
+#define LIB_SPEC "-lc -lrosco -lc %{!T*:-T hugerom_rosco_m68k_program.ld%s}" 
  
 /* Files that are linked before user code.
    The %s tells GCC to look for these files in the library directory. */
