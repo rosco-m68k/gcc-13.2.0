@@ -5,14 +5,14 @@
 #define ROSCO_M68K 1
  
 /* Default arguments for the m68k-elf-rosco-gcc toolchain 
-   - link newlib BSP and use our link script... */
+   - link newlib BSP, GDB support optionally, and use our link script... */
 #undef LIB_SPEC
-#define LIB_SPEC "%{!g:-lc -lrosco -lc} %{g:-lg -lgrosco -lg} %{bin:--oformat=binary} %{!T*:-T hugerom_rosco_m68k_program.ld%s}" 
+#define LIB_SPEC "%{!g:-lc -lrosco -lc} %{g:-lg -lrosco %{mgdb:-lrosco_gdb} -lg} %{bin:--oformat=binary} %{!T*:-T hugerom_rosco_m68k_program.ld%s}" 
  
 /* Files that are linked before user code.
    The %s tells GCC to look for these files in the library directory. */
 #undef STARTFILE_SPEC
-#define STARTFILE_SPEC "%{!g:crt0.o%s} %{g:gcrt0.o%s} crti.o%s crtbegin.o%s"
+#define STARTFILE_SPEC "%{g:%{!mgdb:crt0.o%s} %{mgdb:gcrt0.o%s}} %{!g:crt0.o%s} crti.o%s crtbegin.o%s"
  
 /* Files that are linked after user code. */
 #undef ENDFILE_SPEC

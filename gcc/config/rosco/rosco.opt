@@ -25,3 +25,7 @@
 bin
 Target RejectNegative
 Build a rosco_m68k uploadable binary directly instead of an elf
+
+mgdb
+Target RejectNegative
+Include GDB remote debugging support (requires -g)
